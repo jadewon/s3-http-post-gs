@@ -14,7 +14,7 @@ function S3HttpPost(accessKeyId, secretAccessKey, bucket, region, acl) {
   if (typeof region !== 'string') throw new Error("Must provide region");
   this.opts = { accessKeyId, secretAccessKey, bucket, region, acl: acl || 'private' };
   this.datetime = this.getDatetime();
-  this.credentials = this.opts.accessKeyId + "/" + this.datetime.date + "/ap-northeast-2/s3/aws4_request";
+  this.credentials = this.opts.accessKeyId + "/" + this.datetime.date + "/" + this.opts.bucket + "/s3/aws4_request";
 }
 S3HttpPost.prototype.getDatetime = function () {
   const now = new Date();
